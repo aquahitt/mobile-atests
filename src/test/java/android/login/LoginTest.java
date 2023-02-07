@@ -5,6 +5,7 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphanumeric;
 import static org.apache.commons.lang3.RandomUtils.nextInt;
@@ -12,7 +13,7 @@ import static org.apache.commons.lang3.RandomUtils.nextInt;
 @Epic("Sign in to application")
 @DisplayName("Sign in to application")
 @Feature("Login")
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@TestMethodOrder(OrderAnnotation.class)
 public class LoginTest extends BaseTest {
     @Test
     @Order(1)
