@@ -1,0 +1,65 @@
+plugins {
+    id 'java'
+    id 'io.qameta.allure' version '2.11.2'
+}
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    allureVerion = "2.20.1"
+    apacheCommonsLangVersion = "3.12.0"
+    apacheCommonsCollectionsVersion = "4.4"
+    appiumVerion = "8.3.0"
+    junitVersion = "5.9.2"
+    lombokVersion = "1.18.26"
+    seleniumSupportVersion = "4.8.0"
+    slf4jVersion = "2.0.6"
+    aspectjweaverVersion = "1.9.7"
+}
+
+reporting {
+    baseDir = "$buildDir/reports"
+}
+
+allure {
+    version.set("${allureVerion}")
+
+    useJUnit5 {
+        version = "${allureVerion}"
+    }
+
+    report {
+        reportDir.set(project.reporting.baseDirectory.dir("allure-report"))
+    }
+}
+
+dependencies {
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: "${lombokVersion}"
+    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: "${lombokVersion}"
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-support', version: "${seleniumSupportVersion}"
+    implementation group: 'org.slf4j', name: 'slf4j-simple', version: "${slf4jVersion}"
+    implementation group: 'io.qameta.allure', name: 'allure-selenide', version: "${allureVerion}"
+    implementation group: 'io.appium', name: 'java-client', version: "${appiumVerion}"
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: "${apacheCommonsLangVersion}"
+    implementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: "${junitVersion}"
+    implementation group: 'io.qameta.allure', name: 'allure-junit5', version: "${allureVerion}"
+    implementation group: 'io.qameta.allure', name: 'allure-commandline', version: "${allureVerion}", ext: 'pom'
+    testImplementation group: 'org.projectlombok', name: 'lombok', version: "${lombokVersion}"
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: "${junitVersion}"
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: "${junitVersion}"
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: "${junitVersion}"
+    testImplementation group: 'io.qameta.allure', name: 'allure-junit5', version: "${allureVerion}"
+    runtimeOnly group: 'org.aspectj', name: 'aspectjweaver', version: "${aspectjweaverVersion}"
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+tasks.withType(Test)*.finalizedBy allureReport
