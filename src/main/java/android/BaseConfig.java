@@ -11,7 +11,11 @@ import static java.lang.System.getProperty;
 
 @Slf4j
 public class BaseConfig {
-
+    /**
+     * Get the APK file placed in the 'apps' directory.
+     *
+     * @return {@link File}
+     */
     protected static File getApkFile() {
         final File classpathRoot = new File(getProperty("user.dir"));
         final File appDir = new File(classpathRoot, "apps");
@@ -24,6 +28,11 @@ public class BaseConfig {
         return apkFile;
     }
 
+    /**
+     * Get the URL of the Appium Server.
+     *
+     * @return {@link URL}
+     */
     protected static URL getAppiumServerURL() {
         URL url = null;
         try {

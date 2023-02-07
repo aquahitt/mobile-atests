@@ -101,60 +101,115 @@ public class LoginFragment {
         return this;
     }
 
+    /**
+     * Check if form title has a certain text.
+     *
+     * @param expected expected text
+     * @return current {@link LoginFragment} instance
+     */
     @Step("Check if form title has a certain text")
     public LoginFragment assertFormTitleHasText(final String expected) {
         assertEquals(expected, formTitle.getText());
         return this;
     }
 
+    /**
+     * Check if username field placeholder has a certain text.
+     *
+     * @param expected expected text
+     * @return current {@link LoginFragment} instance
+     */
     @Step("Check if username field placeholder has a certain text")
     public LoginFragment assertUsernameFieldPlaceholderHasText(final String expected) {
         assertEquals(expected, usernameEditText.getText());
         return this;
     }
 
+    /**
+     * Check if username field is clickable.
+     *
+     * @return current {@link LoginFragment} instance
+     */
     @Step("Check if username field is clickable")
     public LoginFragment assertUsernameFieldIsClickable() {
         assertTrue(elementIsClickable(usernameEditText), "Username field is clickable");
         return this;
     }
 
+    /**
+     * Check if password field placeholder has a certain text.
+     *
+     * @param expected expected text
+     * @return current {@link LoginFragment} instance
+     */
     @Step("Check if password field placeholder has a certain text")
     public LoginFragment assertPasswordFieldPlaceholderHasText(final String expected) {
         assertEquals(passwordEditText.getText(), expected);
         return this;
     }
 
+    /**
+     * Check if password field is clickable.
+     *
+     * @return current {@link LoginFragment} instance
+     */
     @Step("Check if password field is clickable")
     public LoginFragment assertPasswordFieldIsClickable() {
         assertTrue(elementIsClickable(passwordEditText), "Confirm button is clickable");
         return this;
     }
 
+    /**
+     * Check if error message is empty.
+     *
+     * @return current {@link LoginFragment} instance
+     */
     @Step("Check if error message is empty")
     public LoginFragment assertErrorMessageIsEmpty() {
         assertEquals(EMPTY, errorTextView.getText());
         return this;
     }
 
+    /**
+     * Check if error message has a certain text.
+     *
+     * @param expected expected text
+     * @return current {@link LoginFragment} instance
+     */
     @Step("Check if error message has a certain text")
     public LoginFragment assertErrorMessageHasText(final String expected) {
         assertEquals(expected, errorTextView.getText());
         return this;
     }
 
+    /**
+     * Check if confirm button is clickable.
+     *
+     * @return current {@link LoginFragment} instance
+     */
     @Step("Check if confirm button is clickable")
     public LoginFragment assertConfirmButtonIsClickable() {
         assertTrue(elementIsClickable(confirmButton), "Confirm button is clickable");
         return this;
     }
 
+    /**
+     * Check if confirm button has a certain text.
+     *
+     * @param expected expected text
+     * @return current {@link LoginFragment} instance
+     */
     @Step("Check if confirm button has a certain text")
     public LoginFragment assertConfirmButtonHasText(final String expected) {
         assertEquals(expected, confirmButton.getText());
         return this;
     }
 
+    /**
+     * Check if shop password toggle is clickable.
+     *
+     * @return current {@link LoginFragment} instance
+     */
     @Step("Check if shop password toggle is clickable")
     public LoginFragment assertShowPasswordToggleIsClickable() {
         assertTrue(parseBoolean(showPasswordToggle.getAttribute("clickable")), "Element is clickable");

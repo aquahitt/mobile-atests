@@ -22,6 +22,12 @@ public class MainFragment {
         initElements(new AppiumFieldDecorator(driver, timeout), this);
     }
 
+    /**
+     * Check if text view has a certain text.
+     *
+     * @param expected expected text
+     * @return current {@link MainFragment} instance
+     */
     @Step("Check if text view has a certain text")
     public MainFragment assertTextViewHasText(final String expected) {
         assertEquals(expected, textView.getText());
